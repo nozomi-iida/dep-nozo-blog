@@ -2,6 +2,9 @@ import { Article } from "@/lib/contentful/Articles";
 import Image from "next/image";
 import dayjs from "dayjs";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { pagesPath } from "@/lib/pathpida/$path";
+import Link from "next/link";
+import RichText from "@/lib/contentful/RichText";
 
 type ArticleCardProps = {
   article: Article;
@@ -22,10 +25,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
         <p className="text-sm text-subInfoText font-bold">
           {dayjs(article.updatedAt).format("YYYY-MM-DD")}
         </p>
-        <a
-          // href={pagesPath.articles._id(article.articleId).$url()}
-          className="group"
-        >
+        <Link href={pagesPath.$url()} className="group">
           <h2
             className="text-2xl font-bold leading-snug group-hover:underline overflow-hidden"
             style={{
@@ -36,8 +36,8 @@ export function ArticleCard({ article }: ArticleCardProps) {
           >
             {article.title}
           </h2>
-        </a>
-        <p
+        </Link>
+        <div
           className="overflow-hidden"
           style={{
             WebkitLineClamp: 6,
@@ -45,16 +45,13 @@ export function ArticleCard({ article }: ArticleCardProps) {
             display: "-webkit-box",
           }}
         >
-          {documentToReactComponents(article.content)}
-        </p>
-        <a
-          // href={pagesPath.articles._id(article.articleId).$url()}
-          className="group"
-        >
+          <RichText document={article.content} />
+        </div>
+        <Link href={pagesPath.$url()} className="group">
           <p className="text-md underline group-hover:text-activeColor">
             Read more
           </p>
-        </a>
+        </Link>
       </div>
     </div>
   );
