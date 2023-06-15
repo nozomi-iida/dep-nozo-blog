@@ -1,14 +1,15 @@
-import { getArticles } from "@/lib/articles/getArticles";
-import { ArticleCard } from "./components/ArticleCard/Index";
+import { ArticleCard } from "../components/ArticleCard/Index";
+import { fetchArticles } from "@/lib/contentful/Articles";
 
 export default async function Home() {
-  const articles = await getArticles();
-
+  const articles = await fetchArticles({ preview: false });
   return (
     <div>
-      {articles.items.map((item) => (
-        <ArticleCard article={item} key={item.sys.id} />
-      ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {articles.map((article) => (
+          <ArticleCard article={article} key={article.id} />
+        ))}
+      </div>
     </div>
   );
 }

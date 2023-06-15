@@ -1,34 +1,40 @@
-import { Article } from "@/lib/articles/types";
-import { ItemResType } from "@/lib/contentful/types";
+import { Article } from "@/lib/contentful/Articles";
 import Image from "next/image";
+import dayjs from "dayjs";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 type ArticleCardProps = {
-  article: ItemResType<Article>;
+  article: Article;
 };
 
 export function ArticleCard({ article }: ArticleCardProps) {
-  console.log(article.fields.thumbnail);
-
   return (
     <div className={`bg p-7`}>
-      <Image alt={article.fields.title} src={""} className="w-full h-48" />
-      <div className="flex flex-col space-y-4">
+      <div className="relative h-52">
+        <Image
+          fill
+          src={`https:${article.thumbnail?.src}` ?? ""}
+          alt={article.thumbnail?.alt ?? ""}
+          className="object-cover"
+        />
+      </div>
+      <div className="flex flex-col gap-4 p-7">
         <p className="text-sm text-subInfoText font-bold">
-          {/* {dayjs(article.publishedAt).format("YYYY-MM-DD")} */}
+          {dayjs(article.updatedAt).format("YYYY-MM-DD")}
         </p>
         <a
           // href={pagesPath.articles._id(article.articleId).$url()}
           className="group"
         >
           <h2
-            className="text-2xl leading-snug group-hover:underline overflow-hidden"
+            className="text-2xl font-bold leading-snug group-hover:underline overflow-hidden"
             style={{
               WebkitLineClamp: 2,
               WebkitBoxOrient: "vertical",
               display: "-webkit-box",
             }}
           >
-            {article.fields.title}
+            {article.title}
           </h2>
         </a>
         <p
@@ -39,7 +45,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
             display: "-webkit-box",
           }}
         >
-          {/* {normalContent} */}
+          {documentToReactComponents(article.content)}
         </p>
         <a
           // href={pagesPath.articles._id(article.articleId).$url()}
