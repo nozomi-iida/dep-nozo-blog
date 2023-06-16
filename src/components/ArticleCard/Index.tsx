@@ -1,4 +1,4 @@
-import { Article } from "@/lib/contentful/Articles";
+import { Article } from "@/lib/contentful/articles";
 import Image from "next/image";
 import dayjs from "dayjs";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -12,7 +12,7 @@ type ArticleCardProps = {
 
 export function ArticleCard({ article }: ArticleCardProps) {
   return (
-    <div className={`bg p-7`}>
+    <div className="bg-white">
       <div className="relative h-52">
         <Image
           fill
