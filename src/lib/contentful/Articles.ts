@@ -35,10 +35,12 @@ export function parseContentfulArticle(
 interface FetchArticlesOptions {
   preview?: boolean;
   limit?: number;
+  keyword?: string;
 }
 export async function fetchArticles({
   preview = false,
   limit,
+  keyword,
 }: FetchArticlesOptions): Promise<Article[]> {
   const contentful = contentfulClient({ preview });
 
@@ -46,6 +48,7 @@ export async function fetchArticles({
     content_type: "article",
     include: 2,
     limit,
+    query: keyword,
     order: ["sys.updatedAt"],
   });
 

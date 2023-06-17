@@ -4,7 +4,6 @@ import dayjs from "dayjs";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { pagesPath } from "@/lib/pathpida/$path";
 import Link from "next/link";
-import RichText from "@/lib/contentful/RichText";
 
 type ArticleCardProps = {
   article: Article;

@@ -24,7 +24,7 @@ const Content: LayoutSubComponent["Content"] = function ({ children }) {
 };
 
 const Sidebar: LayoutSubComponent["Sidebar"] = function ({ children }) {
-  return <aside className="min-w-sidebar">{children}</aside>;
+  return <aside className="min-w-sidebar px-4">{children}</aside>;
 };
 
 Layout.Content = Content;

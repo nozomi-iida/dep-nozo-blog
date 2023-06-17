@@ -1,9 +1,19 @@
-import { ArticleCard } from "../components/ArticleCard/Index";
 import { fetchArticles } from "@/lib/contentful/articles";
 import { Layout } from "@/components/Layout";
+import { ArticleCard } from "@/components/ArticleCard/Index";
 
-export default async function Home() {
-  const articles = await fetchArticles({ preview: false });
+export type OptionalQuery = {
+  keyword?: string;
+};
+
+type SearchProps = {
+  searchParams: OptionalQuery;
+};
+
+export default async function Search({
+  searchParams: { keyword },
+}: SearchProps) {
+  const articles = await fetchArticles({ keyword });
   return (
     <Layout>
       <Layout.Content>
