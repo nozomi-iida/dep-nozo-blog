@@ -5,6 +5,7 @@ type LayoutProps = {
 };
 type LayoutSubComponent = {
   Content: React.FC<LayoutProps>;
+  Sidebar: React.FC<LayoutProps>;
 };
 
 export function Layout({ children }: LayoutProps) {
@@ -17,7 +18,12 @@ export function Layout({ children }: LayoutProps) {
 }
 
 const Content: LayoutSubComponent["Content"] = function ({ children }) {
-  return <main className="w-full">{children}</main>;
+  return <main className="w-full px-4">{children}</main>;
+};
+
+const Sidebar: LayoutSubComponent["Sidebar"] = function ({ children }) {
+  return <main className="w-full px-4">{children}</main>;
 };
 
 Layout.Content = Content;
+Layout.Sidebar = Sidebar;
