@@ -34,16 +34,19 @@ export function parseContentfulArticle(
 
 interface FetchArticlesOptions {
   preview?: boolean;
+  limit?: number;
 }
 export async function fetchArticles({
   preview = false,
+  limit,
 }: FetchArticlesOptions): Promise<Article[]> {
   const contentful = contentfulClient({ preview });
 
   const ArticleResult = await contentful.getEntries<TypeArticleSkeleton>({
     content_type: "article",
     include: 2,
-    order: ["fields.title"],
+    limit,
+    order: ["sys.updatedAt"],
   });
 
   return ArticleResult.items.map(
