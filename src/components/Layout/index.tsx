@@ -16,7 +16,7 @@ export function Layout({ children }: LayoutProps) {
       <div className="flex flex-1 max-w-5xl mx-auto w-full py-14">
         {children}
       </div>
-      <div className="min-w-sidebar mx-auto">
+      <div className="max-w-5xl mx-auto">
         <Footer />
       </div>
     </div>
