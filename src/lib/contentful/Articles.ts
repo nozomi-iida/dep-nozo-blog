@@ -34,16 +34,19 @@ export function parseContentfulArticle(
 
 interface FetchArticlesOptions {
   preview?: boolean;
+  limit?: number;
 }
 export async function fetchArticles({
   preview = false,
+  limit,
 }: FetchArticlesOptions): Promise<Article[]> {
   const contentful = contentfulClient({ preview });
 
   const ArticleResult = await contentful.getEntries<TypeArticleSkeleton>({
     content_type: "article",
     include: 2,
-    order: ["fields.title"],
+    limit,
+    order: ["sys.updatedAt"],
   });
 
   return ArticleResult.items.map(
@@ -52,17 +55,20 @@ export async function fetchArticles({
 }
 
 interface FetchArticleOptions {
-  preview: boolean;
+  id: string;
+  preview?: boolean;
 }
-export async function fetchArticle({
-  preview,
-}: FetchArticleOptions): Promise<Article | null> {
+export const fetchArticle = async ({
+  id,
+  preview = false,
+}: FetchArticleOptions): Promise<Article | null> => {
   const contentful = contentfulClient({ preview });
 
   const ArticleResult = await contentful.getEntries<TypeArticleSkeleton>({
     content_type: "article",
+    "sys.id": id,
     include: 2,
   });
 
   return parseContentfulArticle(ArticleResult.items[0]);
-}
+};

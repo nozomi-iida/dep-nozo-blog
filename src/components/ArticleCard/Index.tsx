@@ -45,7 +45,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
             display: "-webkit-box",
           }}
         >
-          <RichText document={article.content} />
+          {documentToReactComponents(article.content)}
         </div>
         <Link href={pagesPath.$url()} className="group">
           <p className="text-md underline group-hover:text-activeColor">
