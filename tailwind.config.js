@@ -15,6 +15,7 @@ module.exports = {
       colors: {
         bg: "#f7f8f8",
         subInfo: "#989EA6",
+        primary: "#6BA3DB",
       },
       minWidth: {
         sidebar: "18rem",
