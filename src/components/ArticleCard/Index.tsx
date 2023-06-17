@@ -24,7 +24,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
         <p className="text-sm text-subInfoText font-bold">
           {dayjs(article.updatedAt).format("YYYY-MM-DD")}
         </p>
-        <Link href={pagesPath.$url()} className="group">
+        <Link href={`/articles/${article.id}`} className="group">
           <h2
             className="text-2xl font-bold leading-snug group-hover:underline overflow-hidden"
             style={{
@@ -46,7 +46,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
         >
           {documentToReactComponents(article.content)}
         </div>
-        <Link href={pagesPath.$url()} className="group">
+        <Link href={`/articles/${article.id}`} className="group">
           <p className="text-md underline group-hover:text-activeColor">
             Read more
           </p>
