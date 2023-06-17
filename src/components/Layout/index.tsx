@@ -1,3 +1,4 @@
+import { Footer } from "../Footer";
 import { Header } from "../Header";
 
 type LayoutProps = {
@@ -12,8 +13,11 @@ export function Layout({ children }: LayoutProps) {
   return (
     <div className="pt-20 flex flex-col	min-h-screen bg-bg">
       <Header />
-      <div className="flex flex-1 max-w-5xl mx-auto w-full py-4">
+      <div className="flex flex-1 max-w-5xl mx-auto w-full py-14">
         {children}
+      </div>
+      <div className="min-w-sidebar mx-auto">
+        <Footer />
       </div>
     </div>
   );

@@ -28,6 +28,7 @@ module.exports = {
         bg: "#f7f8f8",
         subInfo: "#989EA6",
         primary: "#6BA3DB",
+        border: "#E3E5E6"
       },
       minWidth: {
         sidebar: "18rem",
