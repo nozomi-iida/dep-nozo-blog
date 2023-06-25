@@ -9,7 +9,7 @@ type ArticleWidgetProps = {
 
 export function ArticleWidget({ article }: ArticleWidgetProps) {
   return (
-    <Link href="" className="relative shadow group">
+    <Link href={`/articles/${article.id}`} className="relative shadow group">
       <Image
         src={`https:${article.thumbnail?.src}` ?? ""}
         alt={article.thumbnail?.alt ?? ""}

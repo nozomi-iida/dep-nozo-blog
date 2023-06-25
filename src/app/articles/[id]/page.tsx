@@ -28,7 +28,7 @@ export default async function ArticleDetail({
         />
         <div className="bg-white p-8 flex gap-4 flex-col">
           <div className="flex gap-2">
-            <p className="text-subInfo">
+            <p className="text-subInfo text-medium">
               {dayjs(article?.updatedAt).format("YYYY-MM-DD")}
             </p>
           </div>

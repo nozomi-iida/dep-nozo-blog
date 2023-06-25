@@ -28,10 +28,14 @@ module.exports = {
         bg: "#f7f8f8",
         subInfo: "#989EA6",
         primary: "#6BA3DB",
-        border: "#E3E5E6"
+        border: "#E3E5E6",
+        text: "#2F3235",
       },
       minWidth: {
         sidebar: "18rem",
+      },
+      screens: {
+        md: { max: "767px" },
       },
     },
   },
