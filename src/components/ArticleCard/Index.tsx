@@ -2,7 +2,6 @@ import { Article } from "@/lib/contentful/articles";
 import Image from "next/image";
 import dayjs from "dayjs";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { pagesPath } from "@/lib/pathpida/$path";
 import Link from "next/link";
 
 type ArticleCardProps = {

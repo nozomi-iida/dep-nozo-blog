@@ -33,16 +33,14 @@ export function parseContentfulArticle(
 }
 
 interface FetchArticlesOptions {
-  preview?: boolean;
   limit?: number;
   keyword?: string;
 }
 export async function fetchArticles({
-  preview = false,
   limit,
   keyword,
 }: FetchArticlesOptions): Promise<Article[]> {
-  const contentful = contentfulClient({ preview });
+  const contentful = contentfulClient();
 
   const ArticleResult = await contentful.getEntries<TypeArticleSkeleton>({
     content_type: "article",
@@ -59,13 +57,11 @@ export async function fetchArticles({
 
 interface FetchArticleOptions {
   id: string;
-  preview?: boolean;
 }
 export const fetchArticle = async ({
   id,
-  preview = false,
 }: FetchArticleOptions): Promise<Article | null> => {
-  const contentful = contentfulClient({ preview });
+  const contentful = contentfulClient();
 
   const ArticleResult = await contentful.getEntries<TypeArticleSkeleton>({
     content_type: "article",
